@@ -1,3 +1,4 @@
+'use strict';
 (function(global){
     var utils = {
         /**
@@ -38,5 +39,5 @@
 
     };
 
-    global.utils = lang.extend(global.utils || {}, utils);
+    global.utils = utils.extend(global.utils || {}, utils);
 })(this);
