@@ -9,7 +9,7 @@
          * @param  {Boolean} type       whether allow element be empty.
          * @return {Boolean}            valid result
          */
-        function valid(oElement,allowEmpty,type){
+        valid: function(oElement,allowEmpty,type){
             if(!gloal.typeOf(oElement,'object')){return false;}
             
             var o=oElement,val,length,min,max,t,result=false;
