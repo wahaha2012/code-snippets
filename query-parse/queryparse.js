@@ -1,4 +1,5 @@
 'use strict';
+//require global.utils
 (function(global){
     var queryParse = {
         /**
@@ -18,12 +19,12 @@
                 matches = searchString.match(pattern);
 
             if(matches && global.typeOf(matches,'array') && matches.length>0){
-                return matches[0].replace(queryKey+'=', '');
+                return decodeURIComponent(matches[0].replace(queryKey+'=', ''));
             }else{
                 return '';
             }
         }
     };
 
-    global.queryParse = lang.extend(global.queryParse || {}, queryParse);
+    global.queryParse = utils.extend(global.queryParse || {}, queryParse);
 })(this);

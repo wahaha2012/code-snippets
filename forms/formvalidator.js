@@ -1,4 +1,5 @@
 'use strict';
+//require global.utils
 (function(global){
     var formValidator = {
         /**
@@ -9,10 +10,10 @@
          * @return {Boolean}            valid result
          */
         function valid(oElement,allowEmpty,type){
-            if(typeof oElement!=='object'){return false;}
+            if(!gloal.typeOf(oElement,'object')){return false;}
             
             var o=oElement,val,length,min,max,t,result=false;
-            if(is(o,'Object')&&is(o.attr,'Function')){
+            if(global.typeOf(o,'object')&&global.typeOf(o.attr,'function')){
                 val=o.val();
                 length=o.attr('maxlength')||'n';
                 min=o.attr('min'),
@@ -27,9 +28,9 @@
             }
             
             var reg;
-            if(is(type,'RegExp')){
+            if(global.typeOf(type,'regexp')){
                 reg=type;
-            }else if(is(allowEmpty,'RegExp')){
+            }else if(global.typeOf(allowEmpty,'regexp')){
                 reg=allowEmpty;
             }else{
                 switch(t){
@@ -63,7 +64,7 @@
             result=reg.test(val);
             
             //min and max
-            if(typeof min!=='undefined'&&min!==null){
+            if(!global.typeOf(min,'undefined')&&min!==null){
                 var vTemp=Number(val);
                 if(vTemp!==0&&!vTemp){
                     min<=val?'':result=false;
@@ -71,7 +72,7 @@
                     min<=vTemp?'':result=false;
                 }
             }
-            if(typeof max!=='undefined'&&max!==null){
+            if(!global.typeOf(max,'undefined')&&max!==null){
                 var vTemp=Number(val);
                 if(vTemp!==0&&!vTemp){
                     max>=val?'':result=false;
@@ -81,7 +82,7 @@
             }
             
             //allow empty
-            if(!is(allowEmpty,'RegExp')&&allowEmpty&&val===''){
+            if(!global.typeOf(allowEmpty,'regexp')&&allowEmpty&&val===''){
                 result=true;
             }
             

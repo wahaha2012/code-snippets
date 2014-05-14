@@ -1,4 +1,5 @@
 'use strict';
+//require global.utils
 (function(global){
     var dateTransform = {
         /**
@@ -59,5 +60,5 @@
         }
     };
 
-    global.dateTransform = lang.extend(global.dateTransform || {}, dateTransform);
+    global.dateTransform = utils.extend(global.dateTransform || {}, dateTransform);
 })(this);
