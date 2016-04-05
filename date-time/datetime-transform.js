@@ -57,6 +57,24 @@
                 dateSeconds = 24 * 60 * 60 *1000;
 
             return Math.floor(endDay.getTime()/dateSeconds) - Math.floor(beginDay.getTime()/dateSeconds);
+        },
+
+        /**
+         * get days count of month
+         * @param  {Integer} year  [year to be calculate]
+         * @param  {Integer} month [month to be calculate]
+         * @return {Integer}       [days count of the month]
+         */
+        getMonthDays: function(year, month){
+            year = parseInt(year,10);
+            month = parseInt(month,10);
+
+            var monthDays = [31,28,31,30,31,30,31,31,30,31,30,31];
+            if(month == 2){
+                if(year%400===0 || (year%100!=0 && year%4===0)){return 29;}
+            }
+            
+            return monthDays[month - 1];
         }
     };
 
